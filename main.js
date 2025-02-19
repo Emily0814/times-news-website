@@ -15,6 +15,8 @@ const groupSize = 5;
 
 const getNews = async () => {  //겹치는 내용 함수로 만들기
     try{
+        url.searchParams.set("page",page);  // => &page=page
+        url.searchParams.set("pageSize",pageSize);
         //인터넷에 있는 데이터를 가져올 때 사용하는 함수는 여러 상황에서 에러가 발생할 수 있으므로 try catch 처리함 > 에러 핸들링
         //console.log("Fetching data from:", url); // 이 줄을 추가하여 URL을 로그로 확인
         const response = await fetch(url);
@@ -117,22 +119,28 @@ const paginationRender = () => {
     //totalResult
     //page
     //pageSize
+    //totalPages
+    const totalPages = Math.ceil(totalResult/pageSize);
     //groupSize
 
     //pageGroup
     const pageGroup = Math.ceil(page / groupSize);
     //lastPage
-    const lastPage = pageGroup * groupSize;
+    let lastPage = pageGroup * groupSize;
+    //마지막 페이지 그룹이 그룹 사이즈보다 작다? lastPage = totalPage
+    if (lastPage > totalPages) {
+        lastPage = totalPages;
+    }
     //firstPage
-    const firstPage = lastPage - (groupSize - 1);
+    const firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
     //first ~ last
     
-    const paginationHTML = ``;
+    let paginationHTML = `<li class="page-item" onclick="moveToPage(${page-1})"><a class="page-link" href="#">Previous</a></li>`;
 
     for(let i=firstPage; i<=lastPage; i++) {
-        paginationHTML += `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`
+        paginationHTML += `<li class="page-item ${i === page ? "active" : ""}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`
     }
-
+    paginationHTML += `<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link" href="#">Next</a></li>`
     document.querySelector(".pagination").innerHTML = paginationHTML;
 
     // <nav aria-label="Page navigation example">
@@ -146,6 +154,11 @@ const paginationRender = () => {
     // </nav>
 }
 
+const moveToPage=(pageNum)=>{
+    console.log("movetopage", pageNum);
+    page = pageNum;
+    getNews();
+};
 getLatestNews();
 
 //1. 버튼들에 클릭 이벤트 주기
