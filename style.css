@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid black;
     border-bottom: 4px double black;
 }
 
@@ -35,3 +35,31 @@
 .news {
     border-bottom: 1px solid black;
 }
+
+.search {
+    display: flex;
+    align-items: center; /* 수직 정렬 */
+    margin-top: 10px;
+}
+
+#search-input {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 16px;
+  }
+
+.search-button {
+    height: 30px; /* input과 동일한 높이로 설정 */
+    background: none;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border: none;
+}
+
+.search-button img {
+    height: 20px; /* 아이콘 크기 조정 */
+    width: 20px;
+    display: flex;
+    justify-content: center; /* 가로로 중앙 정렬 */
+    align-items: center; /* 세로로 중앙 정렬 */
+  }

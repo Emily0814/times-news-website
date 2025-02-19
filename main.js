@@ -1,4 +1,4 @@
-const API_KEY = `b1d0ae53b17e43d681894e2138b9655e`
+const API_KEY = ``;
 let newsList = [];
 const menus = document.querySelectorAll(".menus button");
 //console.log("mmm", menus); 7개 출력
