@@ -1,5 +1,5 @@
 ## Times News website
-image
+![image](https://github.com/user-attachments/assets/d9db44fc-fa95-4a00-9acd-4e68537ee5f9)
 
 ### User Story
 - User can see the news in landing page
