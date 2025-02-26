@@ -48,6 +48,7 @@ const getLatestNews = async () => {
     //자바스크립트는 개발자가 필요로하는 많은 함수들을 제공해줌 > 아래처럼 작성할 수 있음
     //const url = new URL(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
     url = new URL(
+            //`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`
             `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr`
         );
     //URL 호출 > 인터넷 세계에서 우리의 데이터를 긁어오는 것이 우리의 목표 > fetch 함수
@@ -68,7 +69,10 @@ const getNewsByCategory = ( async(event) => {
     //console.log("Ddd", data);
     // newsList = data.articles;
     // render();
-    url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}`) 
+    url = new URL(
+        //`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`
+        `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}`
+        );
     getNews();
 })
 
@@ -80,7 +84,10 @@ const getNewsByKeyword=( async() => {
     // const data = await response.json();
     // newsList = data.articles;
     // render();
-    url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${keyword}`); 
+    url = new URL(
+        //`https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`
+        `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${keyword}`
+        );
     getNews();
 })  
 
