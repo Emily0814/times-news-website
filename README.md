@@ -1,5 +1,5 @@
 # Times News website
-![image](https://github.com/user-attachments/assets/d9db44fc-fa95-4a00-9acd-4e68537ee5f9)
+![image](https://github.com/user-attachments/assets/53ac5aee-9f45-4fea-a685-9f8d988019b2)
 
 ### User Story
 - 사용자는 랜딩 페이지에서 뉴스를 볼 수 있다.
