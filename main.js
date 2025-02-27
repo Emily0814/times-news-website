@@ -166,7 +166,7 @@ const paginationRender = () => {
     const totalPages = Math.ceil(totalResult/pageSize);
     //groupSize
 
-    //pageGroup
+    //pageGroupㅋ
     const pageGroup = Math.ceil(page / groupSize);
     //lastPage
     let lastPage = pageGroup * groupSize;
@@ -174,16 +174,37 @@ const paginationRender = () => {
     if (lastPage > totalPages) {
         lastPage = totalPages;
     }
-    //firstPage
-    const firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
     //first ~ last
+    //현재 페이지 그룹의 첫 페이지 계산
+    const firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
     
-    let paginationHTML = `<li class="page-item" onclick="moveToPage(${page-1})"><a class="page-link" href="#">Previous</a></li>`;
+    //첫 번째 페이지 그룹인지 확인
+    const isFirstGroup = pageGroup === 1;
 
+    // 마지막 페이지 그룹인지 확인
+    const isLastGroup = lastPage === totalPages;
+
+    let paginationHTML = '';
+
+    // 첫 번째 페이지 그룹이 아닐 경우에만 맨 처음과 이전 화살표 표시
+    if (!isFirstGroup) {
+        //맨 처음 페이지로 이동 버튼 추가
+        paginationHTML += `<li class="page-item" onclick="moveToPage(1)"><a class="page-link" href="#">&lt;&lt;</a></li>`;
+        // 이전 페이지 버튼
+        paginationHTML  += `<li class="page-item" onclick="moveToPage(${page-1})"><a class="page-link" href="#">&lt;</a></li>`;
+    }
+    // 페이지 번호 버튼들
     for(let i=firstPage; i<=lastPage; i++) {
         paginationHTML += `<li class="page-item ${i === page ? "active" : ""}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`
     }
-    paginationHTML += `<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link" href="#">Next</a></li>`
+
+    // 마지막 페이지 그룹이 아닐 경우에만 다음과 맨 끝 화살표 표시
+    if (!isLastGroup) {
+        // 다음 페이지 버튼
+        paginationHTML += `<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link" href="#">&gt;</a></li>`
+        // 맨 마지막 페이지로 이동 버튼 추가
+        paginationHTML += `<li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link" href="#">&gt;&gt;</a></li>`;
+    }
     document.querySelector(".pagination").innerHTML = paginationHTML;
 
     // <nav aria-label="Page navigation example">
