@@ -6,7 +6,7 @@
 }
 
 .head-line {
-    margin-top: 1em;
+    margin-top: 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,7 +59,6 @@
 }
 
 .news-img-size {
-    /* max-width: 100%; */
     max-height: 250px;
     width: 100%;  
     object-fit: cover; /* 이미지 크기에 맞게 자르기 */
@@ -72,14 +71,13 @@
 .search {
     display: flex;
     align-items: center; /* 수직 정렬 */
-    margin-top: 10px;
 }
 
 #search-input {
     height: 30px;
     padding: 0 10px;
     font-size: 16px;
-  }
+}
 
 .search-icon {
     height: 30px; /* input과 동일한 높이로 설정 */
@@ -101,11 +99,31 @@
     display: none;
 }
 
+.pagination {
+    margin: 10px;
+    justify-content: center;
+}
+
 /* 모바일 스타일 */
 @media screen and (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
+    .header-content {
+        display: flex;
+        flex-wrap: nowrap; /* 요소들이 한 줄에 배치되도록 설정 */
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0;
+    }
+
+    .head-line {
+        flex: 1 1 auto; 
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .head-line svg {
+        width: 80%;
+        max-width: 250px;
     }
 
     /* 데스크톱용 검색 부분 숨기기 */
@@ -133,7 +151,13 @@
 
     /* 모바일에서 햄버거 메뉴 보이기 */
     .hamburger-menu {
-        display: block;
+        display: flex;
+        flex: 0 0 auto; /* 고정 크기 */
+    }
+
+    .hamburger-menu img {
+        width: 25px;
+        height: auto;
     }
 
     /* 모바일에서 카테고리 메뉴 숨기기 */
