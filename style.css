@@ -1,11 +1,37 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
 .head-line {
     margin-top: 1em;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 .head-line svg {
     width: 438px;
+}
+
+.head-line .search {
+    align-self: flex-end; /* 우측 정렬 */
+    margin-top: 10px; /* 로고와 검색 부분 사이의 간격 조절 */
+}
+
+/* 헤더 및 메뉴 스타일 */
+.hamburger-menu {
+    display: none; /* 기본적으로 숨김 */
+    background: none;
+    border: none;
+}
+
+.hamburger-menu img {
+    width: 30px;
+    height: 30px;
 }
 
 .menus {
@@ -21,15 +47,22 @@
     border: none;
     background: none;
     margin: 5px;
+    margin-right: 10px;
 }
 
 .menus button:hover {
     background-color: beige;
 }
 
+.side-menu {
+    display: none;
+}
+
 .news-img-size {
-    max-width: 100%;
+    /* max-width: 100%; */
     max-height: 250px;
+    width: 100%;  
+    object-fit: cover; /* 이미지 크기에 맞게 자르기 */
 }
 
 .news {
@@ -48,7 +81,7 @@
     font-size: 16px;
   }
 
-.search-button {
+.search-icon {
     height: 30px; /* input과 동일한 높이로 설정 */
     background: none;
     border: 1px solid #ccc;
@@ -56,10 +89,99 @@
     border: none;
 }
 
-.search-button img {
+.search-icon img {
     height: 20px; /* 아이콘 크기 조정 */
     width: 20px;
     display: flex;
     justify-content: center; /* 가로로 중앙 정렬 */
     align-items: center; /* 세로로 중앙 정렬 */
   }
+
+.hidden {
+    display: none;
+}
+
+/* 모바일 스타일 */
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* 데스크톱용 검색 부분 숨기기 */
+    .search {
+        display: none;
+    }
+
+    /* 모바일용 검색 부분 보이기 */
+    .mobile-search {
+        display: block;
+        margin: 20px;
+    }
+
+    .mobile-search input,
+    .mobile-search button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .search input, .search button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    /* 모바일에서 햄버거 메뉴 보이기 */
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* 모바일에서 카테고리 메뉴 숨기기 */
+    .menus {
+        display: none;
+    }
+
+    /* 모바일에서 side-menu 보이기 */
+    .side-menu {
+        display: block; /* 사이드 메뉴를 모바일에서만 보이게 설정 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .side-menu.active {
+        transform: translateX(0);
+    }
+
+    .side-menu .close-menu {
+        background: none;
+        border: none;
+        font-size: 30px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .side-menu-buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .side-menu-buttons button {
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+        background: none;
+        border: none;
+        font-size: 18px;
+    }
+}
